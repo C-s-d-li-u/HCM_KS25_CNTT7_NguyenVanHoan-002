@@ -30,7 +30,8 @@ order_id int ,
 product_id varchar(10),
 quantity int,
 subtotal decimal(12,2),
-foreign key(order_id) references orders(order_id)
+foreign key(order_id) references orders(order_id),
+foreign key (product_id) references product(product_id)
 ); 
 
 insert into category(category_id,category_name , description )
@@ -78,7 +79,9 @@ where detail_id between 0 and 50000;
 -- Câu 6
 select product_id ,product_name,price from product
 where price > '40000' and status = 'available' ;
--- Câu 7 chưa làm
+-- Câu 7 
+select order_id , order_date , customer_name from orders
+where customer_name  like 'M%';
 -- Câu 8
 select product_name , price from product
 order by price desc ;
@@ -95,10 +98,9 @@ limit 3 offset 2 ;
 select p.product_name, p.price,c.category_name 
 from product p 
 inner join category c 
-on p.product_id = c.category_name 
+on p.category_id = c.category_id;
 
-
-
+-- Câu 12
 
 
 
